@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+
 	"github.com/go-kit/kit/endpoint"
 )
 
@@ -22,7 +23,7 @@ var (
 	calError  error
 )
 
-// 服务路由层
+// 逻辑层
 // 注意 type endpoint.Endpoint
 func MakeEndpoint(ser Service) endpoint.Endpoint {
 	return func(ctx context.Context, request interface{}) (response interface{}, err error) {

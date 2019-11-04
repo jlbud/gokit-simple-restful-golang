@@ -14,7 +14,7 @@ import (
 func main() {
 	// 初始化服务层
 	service := &ArithmeticService{}
-	// 初始化服务路由层
+	// 初始化逻辑层
 	endpoint := MakeEndpoint(service)
 
 	var logger log.Logger
@@ -35,7 +35,7 @@ func main() {
 	go func() {
 		c := make(chan os.Signal, 1)
 		signal.Notify(c, syscall.SIGINT, syscall.SIGTERM)
-		errChan <- fmt.Errorf("%s", <-c)
+		errChan <- fmt.Errorf("service stop %s", <-c)
 	}()
 
 	fmt.Println(<-errChan)

@@ -74,5 +74,12 @@ func MakeHttpHandler(ctx context.Context, endpoint endpoint.Endpoint, logger log
 		encodeResponse,
 		options...,
 	))
+
+	http.Handle("/calculate/odd", kithttp.NewServer(
+		endpoint,
+		decodeRequest,
+		encodeResponse,
+		options...,
+	))
 	return router
 }
